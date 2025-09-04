@@ -22,18 +22,14 @@ export default function AdminDashboard() {
       <h3>Users</h3>
       <ul>
         {users.map((u) => (
-          <li key={u.id}>
-            {u.name} - {u.email} ({u.role})
-          </li>
+          <li key={u.id}>{u.name} - {u.email} ({u.role})</li>
         ))}
       </ul>
 
       <h3>Stores</h3>
       <ul>
         {stores.map((s) => (
-          <li key={s.id}>
-            {s.name} - {s.email} (Avg Rating: {s.avg_rating})
-          </li>
+          <li key={s.id}>{s.name} - {s.email} (Avg: {s.avg_rating})</li>
         ))}
       </ul>
     </div>

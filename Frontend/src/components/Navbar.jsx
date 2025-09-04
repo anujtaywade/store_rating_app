@@ -6,15 +6,13 @@ export default function Navbar() {
   const { user, logout } = useContext(AuthContext);
 
   return (
-    <nav style={{ padding: "10px", background: "#eee" }}>
+    <nav style={{ padding: "10px", background: "#ddd" }}>
       {user ? (
         <>
           {user.role === "admin" && <Link to="/admin">Admin Dashboard</Link>}
           {user.role === "owner" && <Link to="/owner">Owner Dashboard</Link>}
           {user.role === "user" && <Link to="/stores">Stores</Link>}
-          <button onClick={logout} style={{ marginLeft: "10px" }}>
-            Logout
-          </button>
+          <button onClick={logout} style={{ marginLeft: "10px" }}>Logout</button>
         </>
       ) : (
         <>
