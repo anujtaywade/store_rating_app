@@ -10,6 +10,10 @@ app.use(express.json());
 
 
 app.use("/auth", require("./routes/auth"));
+app.use("/admin", require("./routes/admin"));
+app.use("/user", require("./routes/user"));
+app.use("/owner", require("./routes/owner"));
+
 
 
 app.get("/", (req, res) => res.send("Backend is running..."));
