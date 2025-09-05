@@ -21,7 +21,7 @@ export default function OwnerDashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-[#E0F0F6] p-6">
       <h2 className="text-2xl font-bold text-center mb-6">My Stores</h2>
       {stores.map((store) => (
         <div

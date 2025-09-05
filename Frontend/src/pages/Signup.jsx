@@ -30,7 +30,7 @@ export default function Signup() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-green-400 to-emerald-500">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-[#01497C] to-[#2A6F97]">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Create an Account

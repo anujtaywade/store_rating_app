@@ -9,7 +9,7 @@ export default function AdminDashboard() {
   useEffect(() => {
    const fetchUsers = async () => {
   try {
-    const res = await api.get("/admin/users"); // token auto-attached
+    const res = await api.get("/admin/users"); 
     setUsers(res.data);
   } catch (err) {
     console.error(err);
@@ -20,12 +20,12 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-[#E0F0F6]p-6">
       <h2 className="text-2xl font-bold text-center mb-6">Manage Users</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow rounded-lg">
           <thead>
-            <tr className="bg-indigo-500 text-white">
+            <tr className="bg-[#014F86] text-white">
               <th className="py-2 px-4">ID</th>
               <th className="py-2 px-4">Name</th>
               <th className="py-2 px-4">Email</th>

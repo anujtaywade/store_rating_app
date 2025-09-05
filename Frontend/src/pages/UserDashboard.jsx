@@ -34,13 +34,13 @@ export default function UserDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="min-h-screen bg-[#E0F0F6] p-6">
       <h2 className="text-2xl font-bold text-center mb-6">Available Stores</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {stores.map((store) => (
           <div
             key={store.id}
-            className="bg-white p-6 rounded-lg shadow-md flex flex-col justify-between"
+            className="bg-[#89C2D9  ] p-6 rounded-lg shadow-md flex flex-col justify-between"
           >
             <h3 className="text-xl font-semibold">{store.name}</h3>
             <p className="text-gray-600">{store.address}</p>

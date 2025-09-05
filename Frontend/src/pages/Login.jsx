@@ -5,7 +5,7 @@ import api from "../api/axios";
 import { AuthContext } from "../context/AuthContext";
 
 export default function Login() {
-  const { login } = useContext(AuthContext); // ✅ use context
+  const { login } = useContext(AuthContext); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,9 +16,12 @@ export default function Login() {
     try {
       const res = await api.post("/auth/login", { email, password });
 
-      login(res.data); // ✅ update context and store token + role
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("role", res.data.role);
 
-      // redirect based on role
+      login(res.data); 
+
+      
       if (res.data.role === "admin") navigate("/admin");
       else if (res.data.role === "owner") navigate("/owner");
       else navigate("/stores");
@@ -28,7 +31,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-400 to-indigo-500">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-[#01497C] to-[#2A6F97]">
       <div className="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Login to Store Rating App
