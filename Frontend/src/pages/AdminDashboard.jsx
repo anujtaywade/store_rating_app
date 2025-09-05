@@ -9,7 +9,7 @@ export default function AdminDashboard() {
   useEffect(() => {
    const fetchUsers = async () => {
   try {
-    const res = await api.get("/admin/users"); 
+    const res = await api.get("/admin/users"); // token auto-attached
     setUsers(res.data);
   } catch (err) {
     console.error(err);

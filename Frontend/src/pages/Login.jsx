@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import React from "react";
-
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Login() {
+  const { login } = useContext(AuthContext); // ✅ use context
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -14,8 +15,10 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await api.post("/auth/login", { email, password });
-      localStorage.setItem("token", res.data.token);
 
+      login(res.data); // ✅ update context and store token + role
+
+      // redirect based on role
       if (res.data.role === "admin") navigate("/admin");
       else if (res.data.role === "owner") navigate("/owner");
       else navigate("/stores");
