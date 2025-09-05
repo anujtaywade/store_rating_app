@@ -1,0 +1,9 @@
+colors for the frontend 
+
+pale dogwood - #EFD0CA
+dun - #C1BCAC
+ash gray - #ACAC9D
+battle shi gray - #979B8D
+reseda gray - #7A8872     #5C7457
+hunter green - #3F6146
+cal polygreen - #214E34

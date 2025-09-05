@@ -1,43 +1,27 @@
 import { useNavigate } from "react-router-dom";
+import React from "react";
+
 
 export default function Landing() {
   const navigate = useNavigate();
 
   return (
-    <div style={{
-      display: "flex",
-      flexDirection: "column",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-      background: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
-      color: "#fff",
-      textAlign: "center"
-    }}>
-      <h1>Welcome to Store Rating App</h1>
-      <p>Discover, rate, and manage stores with ease</p>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-indigo-500 text-white">
+      <h1 className="text-4xl font-bold mb-4">Welcome to Store Rating App</h1>
+      <p className="text-lg mb-6">Discover, rate, and manage stores with ease</p>
       <button
         onClick={() => navigate("/login")}
-        style={{
-          padding: "10px 20px",
-          fontSize: "16px",
-          borderRadius: "8px",
-          border: "none",
-          background: "#fff",
-          color: "#333",
-          cursor: "pointer",
-          marginTop: "20px"
-        }}
+        className="px-6 py-3 bg-white text-indigo-600 rounded-lg font-semibold shadow hover:bg-gray-200"
       >
         Get Started
       </button>
-      <p style={{ marginTop: "10px" }}>
+      <p className="mt-4">
         Don’t have an account?{" "}
         <span
+          className="underline cursor-pointer hover:text-gray-200"
           onClick={() => navigate("/signup")}
-          style={{ textDecoration: "underline", cursor: "pointer" }}
         >
-          Sign up here
+          Sign Up here
         </span>
       </p>
     </div>
