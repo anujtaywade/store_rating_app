@@ -60,9 +60,9 @@ export default function AddStore() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 to-indigo-500 p-6">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-[#C1BCAC] to-[#ACAC9D] p-6">
       <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8">
-        <h2 className="text-3xl font-bold text-center mb-6 text-indigo-600">
+        <h2 className="text-3xl font-bold text-center mb-6 text-[#012A4A]">
           Add a New Store
         </h2>
 
@@ -119,7 +119,7 @@ export default function AddStore() {
 
           <button
             type="submit"
-            className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-lg hover:bg-indigo-700 transition"
+            className="w-full bg-[#012A4A] text-white font-semibold py-2 rounded-lg hover:bg-indigo-900 transition"
           >
             ➕ Add Store
           </button>

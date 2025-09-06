@@ -6,14 +6,14 @@ export default function UserDashboard() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Fetch stores from backend
+
   const fetchStores = async () => {
     try {
       setLoading(true);
       setError(null);
       const res = await api.get("/user/stores"); 
       setStores(res.data);
-      console.log("Stores fetched:", res.data); 
+    
     } catch (err) {
       console.error("Error fetching stores:", err.response || err.message);
       setError(err.response?.data?.error || "Failed to fetch stores");
@@ -26,12 +26,12 @@ export default function UserDashboard() {
     fetchStores();
   }, []);
 
-  // Handle rating a store
+ 
   const handleRate = async (store_id, rating) => {
     try {
       setLoading(true);
       await api.post("/user/rate", { store_id, rating });
-      await fetchStores(); // refresh stores to show updated average rating
+      await fetchStores(); 
       alert("Rating submitted!");
     } catch (err) {
       console.error("Error rating store:", err.response || err.message);

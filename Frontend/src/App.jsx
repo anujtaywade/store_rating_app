@@ -40,7 +40,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
 
-            {/* Role-based routes */}
+           
             <Route
               path="/admin"
               element={
@@ -69,7 +69,7 @@ function App() {
            
             <Route path="/stores" element={<UserDashboard />} />
             
-            {/* Catch-all */}
+         
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Layout>
