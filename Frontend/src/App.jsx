@@ -7,10 +7,9 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import AdminDashboard from "./pages/AdminDashboard";
 import OwnerDashboard from "./pages/OwnerDashboard";
-import UserStores from "./pages/UserStores";
 import AddStore from "./pages/AddStore";
 import { OwnerRoute } from "./components/OwnerRoute";
-
+import UserDashboard from "./pages/UserDashboard";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 
@@ -67,8 +66,8 @@ function App() {
               }
             />
 
-            {/* Public routes */}
-            <Route path="/stores" element={<UserStores />} />
+           
+            <Route path="/stores" element={<UserDashboard />} />
             
             {/* Catch-all */}
             <Route path="*" element={<Navigate to="/" />} />
