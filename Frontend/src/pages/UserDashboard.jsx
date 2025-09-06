@@ -58,6 +58,7 @@ export default function UserDashboard() {
             key={store.id}
             className="bg-[#89C2D9] p-6 rounded-lg shadow-md flex flex-col justify-between"
           >
+             
             <h3 className="text-xl font-semibold">{store.name}</h3>
             <p className="text-gray-600">{store.address || "No address provided"}</p>
             <p className="text-gray-500 text-sm">
