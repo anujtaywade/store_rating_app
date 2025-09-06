@@ -2,7 +2,7 @@ const { getStores, rateStore } = require("../models/userAppModel");
 
 exports.viewStores = async (req, res) => {
   try {
-    const stores = await getStores();// fetch all owner-added stores
+    const stores = await getStores();
     res.json(stores);
   } catch (err) {
     res.status(500).json({ error: err.message });
