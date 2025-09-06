@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext ,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import { AuthContext } from "../context/AuthContext";
@@ -10,18 +10,25 @@ export default function AddStore() {
     name: "",
     address: "",
     description: "",
+    image: null, // ✅ new field for optional image upload
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // Redirect non-owner users
+  // ✅ redirect if not owner
+ useEffect(() => {
   if (!user || user.role !== "owner") {
     navigate("/login");
-    return null;
   }
+}, [user, navigate]);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setFormData({ ...formData, image: files[0] }); // handle file upload
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -30,11 +37,23 @@ export default function AddStore() {
     setSuccess("");
 
     try {
-      await api.post("/owner/stores/add", formData, {
-        headers: { Authorization: `Bearer ${user.token}` },
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("address", formData.address);
+      formDataToSend.append("description", formData.description);
+      if (formData.image) {
+        formDataToSend.append("image", formData.image);
+      }
+
+      await api.post("/owner/stores/add", formDataToSend, {
+        headers: { 
+          Authorization: `Bearer ${user.token}`, 
+          "Content-Type": "multipart/form-data" 
+        },
       });
-      setSuccess("Store added successfully!");
-      setFormData({ name: "", address: "", description: "" });
+
+      setSuccess("🎉 Store added successfully!");
+      setFormData({ name: "", address: "", description: "", image: null });
     } catch (err) {
       setError(err.response?.data?.error || "Failed to add store");
     }
@@ -42,11 +61,12 @@ export default function AddStore() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 to-indigo-500 p-6">
-      <div className="w-full max-w-lg bg-white rounded-2xl shadow-lg p-8">
+      <div className="w-full max-w-xl bg-white rounded-2xl shadow-xl p-8">
         <h2 className="text-3xl font-bold text-center mb-6 text-indigo-600">
           Add a New Store
         </h2>
 
+        {/* ✅ Messages */}
         {error && (
           <div className="bg-red-100 text-red-700 p-2 mb-4 rounded">{error}</div>
         )}
@@ -54,6 +74,7 @@ export default function AddStore() {
           <div className="bg-green-100 text-green-700 p-2 mb-4 rounded">{success}</div>
         )}
 
+        {/* ✅ Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -80,11 +101,27 @@ export default function AddStore() {
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400"
           />
+
+          {/* ✅ Image Upload */}
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400"
+          />
+
+          {formData.image && (
+  <p className="text-sm text-gray-600 mt-1">
+    📷 Selected: {formData.image.name}
+  </p>
+)}
+
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white font-semibold py-2 rounded-lg hover:bg-indigo-700 transition"
           >
-            Add Store
+            ➕ Add Store
           </button>
         </form>
       </div>
