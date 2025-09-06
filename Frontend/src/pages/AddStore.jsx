@@ -10,12 +10,12 @@ export default function AddStore() {
     name: "",
     address: "",
     description: "",
-    image: null, // ✅ new field for optional image upload
+    image: null, 
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  // ✅ redirect if not owner
+
  useEffect(() => {
   if (!user || user.role !== "owner") {
     navigate("/login");
@@ -25,7 +25,7 @@ export default function AddStore() {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "image") {
-      setFormData({ ...formData, image: files[0] }); // handle file upload
+      setFormData({ ...formData, image: files[0] }); 
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -66,7 +66,7 @@ export default function AddStore() {
           Add a New Store
         </h2>
 
-        {/* ✅ Messages */}
+      
         {error && (
           <div className="bg-red-100 text-red-700 p-2 mb-4 rounded">{error}</div>
         )}
@@ -74,7 +74,7 @@ export default function AddStore() {
           <div className="bg-green-100 text-green-700 p-2 mb-4 rounded">{success}</div>
         )}
 
-        {/* ✅ Form */}
+   
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="text"
@@ -102,7 +102,7 @@ export default function AddStore() {
             className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-400"
           />
 
-          {/* ✅ Image Upload */}
+        
           <input
             type="file"
             name="image"
