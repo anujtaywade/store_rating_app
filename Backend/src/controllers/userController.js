@@ -26,6 +26,8 @@ exports.giveRating = async (req, res) => {
     });
 
     res.json(result);
+    res.status(201).json({ message: "Rating submitted successfully", rating: result });
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

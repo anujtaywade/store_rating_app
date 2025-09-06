@@ -5,6 +5,6 @@ const { viewStores, giveRating } = require("../controllers/userController");
 const router = express.Router();
 
 router.get("/stores", auth, roleCheck("user", "owner", "admin"), viewStores);
-router.post("/rate", auth, roleCheck("user", "owner"), giveRating);
+router.post("/rate", auth, roleCheck("user"), giveRating);
 
 module.exports = router;
