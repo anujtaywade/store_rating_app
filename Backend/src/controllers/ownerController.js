@@ -1,5 +1,5 @@
-const { getMyStores, getStoreRatings } = require("../models/ownerModel");
-const { addStore } = require("../models/adminModel");
+const { getMyStores, getStoreRatings, addStore } = require("../models/ownerModel"); 
+// ✅ import addStore from ownerModel instead of adminModel
 
 exports.myStores = async (req, res) => {
   try {
@@ -20,17 +20,19 @@ exports.storeRatings = async (req, res) => {
   }
 };
 
-exports.createStore = async (req, res) => {
+exports.addStore = async (req, res) => {
   try {
     const { name, address, description } = req.body;
-    const owner_id = req.user.id;
-    const image = req.file?.filename || null; // optional image
+    const owner_id = req.user.id; // ✅ comes from JWT
+    const image = req.file ? req.file.filename : null; // ✅ multer upload
 
     if (!name || !address) {
       return res.status(400).json({ error: "Name and address are required" });
     }
 
+    // ✅ call ownerModel.addStore
     const store = await addStore({ name, address, description, owner_id, image });
+
     res.status(201).json({ message: "Store added successfully", store });
   } catch (err) {
     res.status(500).json({ error: err.message });

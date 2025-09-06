@@ -29,7 +29,7 @@ exports.login = async (req, res) => {
       expiresIn: jwtExpires,
     });
 
-    res.json({ token, role: user.role });
+    res.json({ token, role: user.role, id: user.id });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
