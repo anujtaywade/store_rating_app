@@ -6,7 +6,12 @@ const path = require("path");
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+app.use(cors({
+  origin: 'https://store-rating-app-orcin.vercel.app', 
+  credentials: true, 
+}));
+
 app.use(express.json());
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -16,6 +21,7 @@ app.use("/auth", require("./routes/auth"));
 app.use("/admin", require("./routes/admin"));
 app.use("/user", require("./routes/user"));
 app.use("/owner", require("./routes/owner"));
+
 
 
 
