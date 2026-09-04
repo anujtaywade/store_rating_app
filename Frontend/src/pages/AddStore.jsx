@@ -1,7 +1,7 @@
 import React, { useState, useContext ,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/authContext";
 
 export default function AddStore() {
   const { user } = useContext(AuthContext);
@@ -52,7 +52,7 @@ export default function AddStore() {
         },
       });
 
-      setSuccess("🎉 Store added successfully!");
+      setSuccess("Store added successfully!");
       setFormData({ name: "", address: "", description: "", image: null });
     } catch (err) {
       setError(err.response?.data?.error || "Failed to add store");
@@ -113,7 +113,7 @@ export default function AddStore() {
 
           {formData.image && (
   <p className="text-sm text-gray-600 mt-1">
-    📷 Selected: {formData.image.name}
+    Selected: {formData.image.name}
   </p>
 )}
 
@@ -121,7 +121,7 @@ export default function AddStore() {
             type="submit"
             className="w-full bg-[#012A4A] text-white font-semibold py-2 rounded-lg hover:bg-indigo-900 transition"
           >
-            ➕ Add Store
+            Add Store
           </button>
         </form>
       </div>

@@ -3,12 +3,17 @@ const dotenv = require("dotenv");
 
 dotenv.config();
 
-const pool = new Pool({
+const poolConfig = {
   connectionString: process.env.DATABASE_URL,
-   ssl: {
-    rejectUnauthorized: false
-  }
-});
+};
+
+if (process.env.DB_SSL === "true") {
+  poolConfig.ssl = {
+    rejectUnauthorized: false,
+  };
+}
+
+const pool = new Pool(poolConfig);
 
 pool.on("connect", () => {
   console.log(" Connected to PostgreSQL");

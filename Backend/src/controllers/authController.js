@@ -6,9 +6,10 @@ const { findByEmail, createUser } = require("../models/userModel");
 exports.signup = async (req, res) => {
   try {
     const { name, email, password, address ,role} = req.body;
+    const publicRole = role === "owner" ? "owner" : "user";
     const hashed = await bcrypt.hash(password, 10);
 
-    const user = await createUser({ name, email, password: hashed, address, role: role || "user" });
+    const user = await createUser({ name, email, password: hashed, address, role: publicRole });
 
     res.json(user);
   } catch (err) {

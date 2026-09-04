@@ -84,7 +84,6 @@ export default function Signup() {
           >
             <option value="user">User</option>
             <option value="owner">Store Owner</option>
-            <option value="admin">Admin</option>
           </select>
           <button
             type="submit"

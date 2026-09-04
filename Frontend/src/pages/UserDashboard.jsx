@@ -64,7 +64,7 @@ export default function UserDashboard() {
             <p className="text-gray-500 text-sm">
               Owner: {store.owner_name || "Unknown"}
             </p>
-            <p className="text-sm mt-2">⭐ {store.avg_rating}</p>
+            <p className="text-sm mt-2">Rating: {store.avg_rating}</p>
 
             <div className="mt-4 flex space-x-2">
               {[1, 2, 3, 4, 5].map((star) => (

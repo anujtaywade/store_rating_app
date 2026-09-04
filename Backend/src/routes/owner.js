@@ -1,13 +1,9 @@
 const express = require("express");
-const multer = require("multer");
 const { auth, roleCheck } = require("../middleware/auth");
 const { myStores, storeRatings, addStore } = require("../controllers/ownerController");
+const upload = require("../middleware/upload");
 
 const router = express.Router();
-
-
-const upload = multer({ dest: "uploads/" });
-
 
 router.use(auth, roleCheck("owner"));
 

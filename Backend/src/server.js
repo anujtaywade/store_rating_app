@@ -8,13 +8,13 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: 'https://store-rating-app-orcin.vercel.app', 
-  credentials: true, 
+  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  credentials: true,
 }));
 
 app.use(express.json());
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "..", "uploads")));
 
 
 app.use("/auth", require("./routes/auth"));
@@ -28,4 +28,4 @@ app.use("/owner", require("./routes/owner"));
 app.get("/", (req, res) => res.send("Backend is running..."));
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`🚀 Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

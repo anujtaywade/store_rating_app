@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./context/AuthProvider";
 import Navbar from "./components/Navbar";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -9,15 +9,8 @@ import AdminDashboard from "./pages/AdminDashboard";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import AddStore from "./pages/AddStore";
 import { OwnerRoute } from "./components/OwnerRoute";
+import { AdminRoute } from "./components/AdminRoute";
 import UserDashboard from "./pages/UserDashboard";
-import { useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
-
-function AdminRoute({ children }) {
-  const { user } = useContext(AuthContext);
-  if (!user || user.role !== "admin") return <Navigate to="/login" />;
-  return children;
-}
 
 function Layout({ children }) {
   const location = useLocation();
@@ -40,7 +33,6 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
 
-           
             <Route
               path="/admin"
               element={
@@ -66,10 +58,8 @@ function App() {
               }
             />
 
-           
             <Route path="/stores" element={<UserDashboard />} />
-            
-         
+
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Layout>

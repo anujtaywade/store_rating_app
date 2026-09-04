@@ -30,7 +30,7 @@ export default function OwnerDashboard() {
         >
           <h3 className="text-xl font-semibold">{store.name}</h3>
           <p className="text-gray-600">{store.address}</p>
-          <p className="text-sm">⭐ {store.avg_rating}</p>
+          <p className="text-sm">Rating: {store.avg_rating}</p>
         </div>
       ))}
     </div>

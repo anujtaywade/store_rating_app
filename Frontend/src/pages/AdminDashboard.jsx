@@ -20,7 +20,7 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#E0F0F6]p-6">
+    <div className="min-h-screen bg-[#E0F0F6] p-6">
       <h2 className="text-2xl font-bold text-center mb-6">Manage Users</h2>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white shadow rounded-lg">

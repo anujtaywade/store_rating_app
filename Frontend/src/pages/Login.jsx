@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/authContext";
 
 export default function Login() {
   const { login } = useContext(AuthContext); 
@@ -15,9 +15,6 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await api.post("/auth/login", { email, password });
-
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("role", res.data.role);
 
       login(res.data); 
 
@@ -67,7 +64,7 @@ export default function Login() {
         </form>
 
         <p className="mt-4 text-center text-gray-600">
-          Don’t have an account?{" "}
+          Don't have an account?{" "}
           <a href="/signup" className="text-indigo-500 font-semibold hover:underline">
             Sign Up
           </a>

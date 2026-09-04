@@ -16,7 +16,7 @@ export default function Landing() {
         Get Started
       </button>
       <p className="mt-4">
-        Don’t have an account?{" "}
+        Don't have an account?{" "}
         <span
           className="underline cursor-pointer hover:text-gray-200"
           onClick={() => navigate("/signup")}
